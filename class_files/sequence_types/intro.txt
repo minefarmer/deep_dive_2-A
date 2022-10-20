@@ -1,0 +1,137 @@
+                        What are sequences
+
+Indexing starting at 0
+slices include lower bound index, but exclude upper bound index
+slicing
+slice objects
+modifying mutable sequences
+copying sequences - shallow and deep
+implementing custom sequence types
+sorting
+list comprehensions
+
+
+
+                        Built-in Sequence types
+
+mutable     lists       bytearrays
+
+immutable   strings     tuples     bytes
+                           \         \
+                            \        more limited than lists, strings and tuples
+                             \
+                              in reality a tuple is more than just a sequence type
+
+
+Additional standard types:      collections package     namedtuple
+                                                        deque
+
+                                array module            array
+
+
+
+                        Homogeneous vs Heterogeneous Sequences
+
+Strings are homogeneous sequences
+    each element is of the same type (a character)      'python
+
+
+Lists are heterogeneous sequences
+    each element may be of a different type     [1. 10.5. 'python']
+
+
+
+Homogeneous sequence types are usually more efficient (storage wise at least)
+    e.g. prefer using a string of characters, rather than a list or tuple of characters
+
+
+What does it mean for an object to be iterable?
+    it is a container type of object and we can list out the elements in that object ine by one.
+
+So any sequence type is iterable.
+    l = [1, 2, 3]       for e in l
+                        l[0]
+
+But an iterable is not necessarily a sequence type   -> iterables are more general
+
+    s = {1, 2, 3}       for e in s
+\
+                        s[0] (X) = is not available
+
+
+
+                            Standard Sequence Methods
+Built-in sequence types, both mutable and immutable, support the following methods.
+
+x in s              s1 +s2      concatenation
+x not in            s * n (or n * s)        (n an integer)      repition
+
+
+len(s)              min(s)
+                            (if an ordering between elements of s is defined)
+                    max(s)
+                            This is not the same as the ordering (position) of elements
+                            inside the container, this is the ability to compare pairwise
+                            elements using an order comparision (e.g. <, <=, etc.)
+
+
+s.index(x)          index of first occurrence of x in s
+
+s.index(x, i)       index of first occurrence of x in s at or after index i
+
+s.index(x, i, j)    index of first occurrence of x in s at or after index i and before index j
+
+s[i]        the element at index i
+
+s[i:j]      the slice from index i, to (but not including) j
+
+s[i:j:k]    extended slice from index i, to (but not including) j, in steps of k
+
+Note: Slices will return in the same container type.
+
+
+range objects are more restrictive:
+    no concatenation / repetition
+    min, max, in, not in not as efficient
+
+
+
+                        Hashing
+
+Immutable sequence types may support hashing  hash(s)
+    but not if they contain mutable types!
+
+
+
+                        Beware of Concatenations
+
+x = [1, 2]          a = x + x       a -> [1, 2, 1, 2]
+
+x = 'python'        a = x + x       a -> 'pythonpython'
+
+             # this object is mutable    (Characters are immutable, integers  ar immutable here)
+            /
+x = [ [0, 0] ]      a = x + x       a -> [ [0, 0], [0, 0] ]
+         \                                     /       \
+        /                                     /         \          a[0] is x[0]
+        \                                    /           \         a[1] is x[0]
+     id(x[0])   ==                     id(a[0])      id(a[1])
+
+    a[0][0] = 100       a -> [  [100, 0], [100, 0]]
+
+
+
+                        Beware of Repetitions
+
+a = [1, 2] * 2      a -> [1, 2, 1, 2]
+
+a = 'python' * 2    s -> 'pythonpython'
+
+x = [ [0, 0] ]      a = x + x       a -> [ [0, 0], [0, 0] ]
+         \                                     /       \
+        /                                     /         \          a[0] is x[0]
+        \                                    /           \         a[1] is x[0]
+     id(x[0])   ==                     id(a[0])      id(a[1])
+
+
+a = [0][0]  =  100         a -> [ [100, 0], [100. 0]]
