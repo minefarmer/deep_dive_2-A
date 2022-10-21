@@ -1,0 +1,30 @@
+                        Mutating objects
+
+Mutating an object means changing the object's state without creating a new object.
+
+
+        Mutating Using []
+
+s[i]= x         element at index i is replaced with x
+
+s[i:j] = s2     slice is replaced by the contents of the iterable s2
+
+del s[i]        removes element at index i
+
+del s[i:j]      removes entire slice
+
+We can even assign to extended slices:      s[i:j:k] = s2
+
+
+
+        Some methods supported by mutable sequence types suvh as lists
+
+s.clear()           removes all items from s
+
+s.append(x)         appends x to the end of s
+
+s.insert(i, x)      inserts x at index i
+
+s.extend(iterable)  appends
+
+

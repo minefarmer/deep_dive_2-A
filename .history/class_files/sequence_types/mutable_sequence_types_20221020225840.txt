@@ -1,0 +1,11 @@
+                        Mutating objects
+
+Mutating an object means changing the object's state without creating a new object.
+
+
+        Mutating Using []
+
+s[i]= x         element at index i is replaced with x
+
+s[i:j] = s2     
+
