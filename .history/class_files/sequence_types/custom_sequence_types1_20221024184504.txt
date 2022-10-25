@@ -1,0 +1,25 @@
+                    Creating Our Own Sequence Types
+
+At it's most basic, an immutable sequence type should support two things:
+
+    returning the length of the sequence    (technically, I don't even really need that!)
+    given an index, returning the element of that index.
+            (If i Have an object that can provide, given an index, = the element at that index. It's a sequence)
+
+    No matter how I store the data internally, it doesn't have to be stored in the list or anything like that.
+
+If an object provides this functionality, the we should in theory be able to:
+    retrieve elements by index using square brackets. []
+        "That's our goal, to be able to use that square brackets. []
+        Iterate through the elements using python's native looping mechanisms.
+            e.g. for loops, list,  comprehensions, etc.
+
+
+                        How Python does it
+
+Sequence types, at a minimum, implements the following methods:
+    __len__     __getitem__
+                    At it's most basic, the __getitem__ method takes a single interger argument - the index.
+                    However, it may also choose to handle a slice type argument.
+
+        So

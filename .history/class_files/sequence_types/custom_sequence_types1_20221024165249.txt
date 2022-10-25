@@ -1,0 +1,10 @@
+                    Creating Our Own Sequence Types
+
+At it's most basic, an immutable sequence type should support two things:
+
+    returning the length of the sequence    (technically, I don't even really need that!)
+    given an index, returning the element of that index.
+            (If i Have an object that can provide, given an index, = the element at that index. It's a srquence)
+
+
+
