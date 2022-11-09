@@ -1,0 +1,5 @@
+                    Creating Our Own Sequence Types
+
+At it's most basic, an immutable sequence type should support two things:
+    returning the length of the sequence    (trchnically, I don't even really need that!
+

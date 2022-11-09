@@ -1,0 +1,14 @@
+                    Creating Our Own Sequence Types
+
+At it's most basic, an immutable sequence type should support two things:
+
+    returning the length of the sequence    (technically, I don't even really need that!)
+    given an index, returning the element of that index.
+            (If i Have an object that can provide, given an index, = the element at that index. It's a sequence)
+
+    No matter how I store the data internally, it doesn't have to be stored in the list or anything like that.
+
+If an object provides this functionality, the we should in theory be able to:
+    retrieve elements by index using square brackets []
+
+
